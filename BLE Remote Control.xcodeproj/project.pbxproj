@@ -1,0 +1,364 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		71CB4CA924A44F5E0034EF66 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CB4CA824A44F5E0034EF66 /* Default-568h@2x.png */; };
+		71F212A024A3906C00E85957 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2129F24A3906C00E85957 /* AppDelegate.swift */; };
+		71F212A224A3906C00E85957 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F212A124A3906C00E85957 /* SceneDelegate.swift */; };
+		71F212A424A3906C00E85957 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F212A324A3906C00E85957 /* ViewController.swift */; };
+		71F212A724A3906C00E85957 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F212A524A3906C00E85957 /* Main.storyboard */; };
+		71F212AA24A3906C00E85957 /* HeartMonitor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71F212A824A3906C00E85957 /* HeartMonitor.xcdatamodeld */; };
+		71F212AC24A3906D00E85957 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F212AB24A3906D00E85957 /* Assets.xcassets */; };
+		71F212AF24A3906D00E85957 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F212AD24A3906D00E85957 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		71CB4CA824A44F5E0034EF66 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		71F2129C24A3906C00E85957 /* Remote Control.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Remote Control.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71F2129F24A3906C00E85957 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		71F212A124A3906C00E85957 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		71F212A324A3906C00E85957 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		71F212A624A3906C00E85957 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		71F212A924A3906C00E85957 /* HeartMonitor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeartMonitor.xcdatamodel; sourceTree = "<group>"; };
+		71F212AB24A3906D00E85957 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		71F212AE24A3906D00E85957 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		71F212B024A3906D00E85957 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		71F2129924A3906C00E85957 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		71F2129324A3906C00E85957 = {
+			isa = PBXGroup;
+			children = (
+				71CB4CA824A44F5E0034EF66 /* Default-568h@2x.png */,
+				71F2129E24A3906C00E85957 /* HeartMonitor */,
+				71F2129D24A3906C00E85957 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		71F2129D24A3906C00E85957 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71F2129C24A3906C00E85957 /* Remote Control.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71F2129E24A3906C00E85957 /* HeartMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				71F2129F24A3906C00E85957 /* AppDelegate.swift */,
+				71F212A124A3906C00E85957 /* SceneDelegate.swift */,
+				71F212A324A3906C00E85957 /* ViewController.swift */,
+				71F212A524A3906C00E85957 /* Main.storyboard */,
+				71F212AB24A3906D00E85957 /* Assets.xcassets */,
+				71F212AD24A3906D00E85957 /* LaunchScreen.storyboard */,
+				71F212B024A3906D00E85957 /* Info.plist */,
+				71F212A824A3906C00E85957 /* HeartMonitor.xcdatamodeld */,
+			);
+			path = HeartMonitor;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		71F2129B24A3906C00E85957 /* BLE Remote Control */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71F212B324A3906D00E85957 /* Build configuration list for PBXNativeTarget "BLE Remote Control" */;
+			buildPhases = (
+				71F2129824A3906C00E85957 /* Sources */,
+				71F2129924A3906C00E85957 /* Frameworks */,
+				71F2129A24A3906C00E85957 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BLE Remote Control";
+			productName = HeartMonitor;
+			productReference = 71F2129C24A3906C00E85957 /* Remote Control.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		71F2129424A3906C00E85957 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Bruno Russo";
+				TargetAttributes = {
+					71F2129B24A3906C00E85957 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 71F2129724A3906C00E85957 /* Build configuration list for PBXProject "BLE Remote Control" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 71F2129324A3906C00E85957;
+			productRefGroup = 71F2129D24A3906C00E85957 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				71F2129B24A3906C00E85957 /* BLE Remote Control */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		71F2129A24A3906C00E85957 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71F212AF24A3906D00E85957 /* LaunchScreen.storyboard in Resources */,
+				71CB4CA924A44F5E0034EF66 /* Default-568h@2x.png in Resources */,
+				71F212AC24A3906D00E85957 /* Assets.xcassets in Resources */,
+				71F212A724A3906C00E85957 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		71F2129824A3906C00E85957 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71F212A424A3906C00E85957 /* ViewController.swift in Sources */,
+				71F212AA24A3906C00E85957 /* HeartMonitor.xcdatamodeld in Sources */,
+				71F212A024A3906C00E85957 /* AppDelegate.swift in Sources */,
+				71F212A224A3906C00E85957 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		71F212A524A3906C00E85957 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71F212A624A3906C00E85957 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		71F212AD24A3906D00E85957 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71F212AE24A3906D00E85957 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		71F212B124A3906D00E85957 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		71F212B224A3906D00E85957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		71F212B424A3906D00E85957 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VX75476QM2;
+				INFOPLIST_FILE = HeartMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-producao.bruno.HeartMonitor";
+				PRODUCT_NAME = "Remote Control";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		71F212B524A3906D00E85957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VX75476QM2;
+				INFOPLIST_FILE = HeartMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-producao.bruno.HeartMonitor";
+				PRODUCT_NAME = "Remote Control";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		71F2129724A3906C00E85957 /* Build configuration list for PBXProject "BLE Remote Control" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71F212B124A3906D00E85957 /* Debug */,
+				71F212B224A3906D00E85957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71F212B324A3906D00E85957 /* Build configuration list for PBXNativeTarget "BLE Remote Control" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71F212B424A3906D00E85957 /* Debug */,
+				71F212B524A3906D00E85957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		71F212A824A3906C00E85957 /* HeartMonitor.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				71F212A924A3906C00E85957 /* HeartMonitor.xcdatamodel */,
+			);
+			currentVersion = 71F212A924A3906C00E85957 /* HeartMonitor.xcdatamodel */;
+			path = HeartMonitor.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 71F2129424A3906C00E85957 /* Project object */;
+}
