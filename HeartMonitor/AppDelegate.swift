@@ -26,6 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         print("applicationWillResignActive")
     }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        let viewController = ViewController()
+        viewController.disconnectFromBluetooth()
+        viewController.cancelTimer()
+        print("application will terminate®")
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        let viewController = ViewController()
+        viewController.disconnectFromBluetooth()
+        print("application applicationDidEnterBackground")
+    }
 
     // MARK: UISceneSession Lifecycle
 

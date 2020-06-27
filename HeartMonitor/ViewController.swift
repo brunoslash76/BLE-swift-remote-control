@@ -56,6 +56,7 @@ class ViewController: UIViewController {
             connectionText.text = "on"
             connectionText.textColor = UIColor(displayP3Red: 0, green: 1, blue: 0, alpha: 1)
         } else {
+            emergencyStop()
             disconnectFromBluetooth()
             connectionText.text = "off"
             connectionText.textColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
@@ -63,15 +64,20 @@ class ViewController: UIViewController {
         }
     }
     
-    private func connectToBluetooth() {
+    
+    
+    func connectToBluetooth() {
         centralManager.connect(hmsoftPeripheral, options: nil)
     }
     
-    private func disconnectFromBluetooth() {
-        centralManager.cancelPeripheralConnection(hmsoftPeripheral)
+    func disconnectFromBluetooth() {
+        if let peripheral = hmsoftPeripheral {
+            centralManager.cancelPeripheralConnection(peripheral)
+        }
+        
     }
     
-    private func cancelTimer() {
+    func cancelTimer() {
         timer.invalidate()
     }
     
@@ -79,18 +85,18 @@ class ViewController: UIViewController {
 
 // MARK: - CBCentral Manager Delegate
 extension ViewController: CBCentralManagerDelegate {
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    internal func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .unknown:
-          print("central.state is .unknown")
+            print("central.state is .unknown")
         case .resetting:
-          print("central.state is .resetting")
+            print("central.state is .resetting")
         case .unsupported:
-          print("central.state is .unsupported")
+            print("central.state is .unsupported")
         case .unauthorized:
-          print("central.state is .unauthorized")
+            print("central.state is .unauthorized")
         case .poweredOff:
-          print("central.state is .poweredOff")
+            print("central.state is .poweredOff")
             print("IS FUCKING OFF ========================>>>>>>")
           // I HAVE TO REFACTOR HERE
             setConnectionIndicatorOffUI()
@@ -98,6 +104,7 @@ extension ViewController: CBCentralManagerDelegate {
             setSignalContainerOffView()
             disconnectFromBluetooth()
             isRobotOn = false
+            setTogglerOff()
         case .poweredOn:
           print("central.state is .poweredOn")
             centralManager.scanForPeripherals(withServices: [hmSoftBLE])
@@ -107,17 +114,19 @@ extension ViewController: CBCentralManagerDelegate {
         
     }
     
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+    internal func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("DISCONECTED")
         setConnectionIndicatorOffUI()
         setBluetoothSignalStrenthNoSignalImage()
         setSignalContainerOffView()
         disconnectFromBluetooth()
         animateView(shouldGo: true)
+        setTogglerOff()
         isRobotOn = false
+        emergencyStop()
     }
     
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    internal func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("DISCOVERED =>", peripheral)
         hmsoftPeripheral = peripheral
         hmsoftPeripheral.delegate = self
@@ -125,12 +134,13 @@ extension ViewController: CBCentralManagerDelegate {
         centralManager.connect(hmsoftPeripheral)
     }
     
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    internal func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("CONNECTED TO PERIPHERAL =>", peripheral)
         setSignalContainerOnView()
         hmsoftPeripheral.discoverServices(nil)
         setConnectionIndicatorOnUI()
         animateView(shouldGo: false)
+        setTogglerOn()
         isRobotOn = true
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
             self.checkBLESignalStrenth()
@@ -141,14 +151,14 @@ extension ViewController: CBCentralManagerDelegate {
 
 // MARK: - CPPeripheral Delegate
 extension ViewController: CBPeripheralDelegate {
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+    internal func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         guard let services = peripheral.services else { return }
         for service in services {
             peripheral.discoverCharacteristics(nil, for: service)
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+    internal func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let characteristics = service.characteristics else { return }
         
         for characteristic in characteristics {
@@ -167,7 +177,7 @@ extension ViewController: CBPeripheralDelegate {
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    internal func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         switch characteristic.uuid {
         case hmSoftBLE:
             self.characteristic = characteristic
@@ -177,11 +187,11 @@ extension ViewController: CBPeripheralDelegate {
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+    internal func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         self.switchBluetoothSignalStrenthImage(signalStrenth: RSSI.intValue)
     }
     
-    private func checkBLESignalStrenth() {
+    func checkBLESignalStrenth() {
         hmsoftPeripheral.readRSSI()
     }
     
@@ -190,7 +200,7 @@ extension ViewController: CBPeripheralDelegate {
 // MARK: - User Interaction Controllers
 extension ViewController {
     // User Interaction
-    private func toggleButtonEnabled(with params: Int) {
+    fileprivate  func toggleButtonEnabled(with params: Int) {
         switch params {
         case 1...4:
             enableStopButton()
@@ -202,17 +212,21 @@ extension ViewController {
         }
     }
     
-    private func enableStopButton() {
+    fileprivate  func enableStopButton() {
         stopButton.setImage(UIImage(named: "pause-on"), for: .normal)
         stopButton.isEnabled = true
     }
     
-    private func disableStopButton() {
+    fileprivate  func disableStopButton() {
         stopButton.setImage(UIImage(named: "pause-off"), for: .normal)
         stopButton.isEnabled = false
     }
     
     fileprivate func switchButtonTag(with tag: Int) {
+        if !isRobotOn {
+            emergencyStop()
+            return
+        }
         switch tag {
         case 1:
             print("pressed button = ", tag)
@@ -268,7 +282,7 @@ extension ViewController {
 // MARK: - UI Setup
 extension ViewController {
     
-    private func initializeUIComponents() {
+    fileprivate  func initializeUIComponents() {
         setBackground()
         setUpConectionIndicatorView()
         setUpStopButton()
@@ -280,7 +294,7 @@ extension ViewController {
         setSignalContair()
     }
     
-    private func setBackground() {
+    fileprivate  func setBackground() {
         if let image = UIImage(named: "background") {
             var imageView: UIImageView!
             imageView = UIImageView(frame: view.bounds)
@@ -293,62 +307,58 @@ extension ViewController {
         }
     }
     
-    private func setUpConectionIndicatorView() {
+    fileprivate  func setUpConectionIndicatorView() {
         conectionIndicator.layer.cornerRadius = 12
         conectionIndicator.backgroundColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
     }
     
-    private func setUpStopButton() {
+    fileprivate func setUpStopButton() {
         stopButton.setImage(UIImage(named: "pause-off"), for: .normal)
         stopButton.isEnabled = false
     }
     
-    private func setUpControlContainerView() {
+    fileprivate func setUpControlContainerView() {
         controlContainerView.layer.cornerRadius = 180
         controlContainerView.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
     }
     
-    private func setConnectionIndicatorOnUI() {
+    fileprivate func setConnectionIndicatorOnUI() {
         conectionIndicator.backgroundColor = UIColor(displayP3Red: 0, green: 1, blue: 0, alpha: 1)
     }
     
-    private func setGlassCapImageView() {
+    fileprivate func setGlassCapImageView() {
         glassCapView.image = UIImage(named: "glass-cap")
     }
     
-    private func setConnectionIndicatorOffUI() {
+    fileprivate func setConnectionIndicatorOffUI() {
         conectionIndicator.backgroundColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
     }
     
-    private func setBluetoothSignalStrenthNoSignalImage() {
+    fileprivate func setBluetoothSignalStrenthNoSignalImage() {
         bluetoothSignalStrenthImage.image = UIImage(named: "no-wifi")
     }
     
-    private func setSignalContainerView() {
+    fileprivate func setSignalContainerView() {
         signalContainerView.layer.cornerRadius = 25
     }
     
-    private func setSignalContainerOffView() {
+    fileprivate func setSignalContainerOffView() {
         signalContainerView.backgroundColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
     }
     
-    private func setSignalContainerOnView() {
+    fileprivate func setSignalContainerOnView() {
         signalContainerView.backgroundColor = UIColor(displayP3Red: 0, green: 1, blue: 0, alpha: 1)
     }
     
-    private func setToggleConnectionView() {
+    fileprivate func setToggleConnectionView() {
         toggleConnectionView.layer.cornerRadius = 38.5
     }
     
-    private func setSignalContair() {
+    fileprivate func setSignalContair() {
         signalContainer.layer.cornerRadius = 38.5
     }
     
-    private func positionSetSignalContair(_ connectionStatus: Bool) {
-
-    }
-    
-    private func switchBluetoothSignalStrenthImage(signalStrenth signal: Int) {
+    fileprivate func switchBluetoothSignalStrenthImage(signalStrenth signal: Int) {
         
         let noSignalImage       = UIImage(named: "no-wifi")
         let lowWifiImage        = UIImage(named: "low-wifi")
@@ -375,7 +385,7 @@ extension ViewController {
         }
     }
     
-    private func animateView(shouldGo forward: Bool) {
+    fileprivate func animateView(shouldGo forward: Bool) {
         let originalTransform = CGAffineTransform.identity
         let displacement = forward ? 70.0 : 0.0
         let scaledAndTranslatedTransform = originalTransform.translatedBy(x: CGFloat(displacement), y: 0)
@@ -384,7 +394,8 @@ extension ViewController {
         })
     }
     
-    private func blinkBluetoothConnectionDisplayer() {
+    fileprivate func blinkBluetoothConnectionDisplayer() {
+        if !isRobotOn { return }
         DispatchQueue.main.async {
             Timer.scheduledTimer(withTimeInterval: 0.12, repeats: false, block: { (_) in
                 self.conectionIndicator.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 0, alpha: 1)
@@ -398,10 +409,24 @@ extension ViewController {
                     })
                 })
             })
-            
-            
-            
         }
     }
     
+    fileprivate func setTogglerOff() {
+        switchConnectToggle.isOn = false
+        connectionText.text = "off"
+        connectionText.textColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
+    }
+    
+    fileprivate func setTogglerOn() {
+        switchConnectToggle.isOn = true
+        connectionText.text = "on"
+        connectionText.textColor = UIColor(displayP3Red: 0, green: 1, blue: 0, alpha: 1)
+    }
+    
+    fileprivate func emergencyStop() {
+        let bluetoothSignalToStopRobot = 5
+        toggleButtonEnabled(with: bluetoothSignalToStopRobot)
+        disableStopButton()
+    }
 }
